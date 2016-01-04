@@ -1,0 +1,26 @@
+shell -$SHELL
+
+## 解决无法滚动
+termcapinfo xterm|xterms|xs ti@:te=\E[2J
+#termcapinfo xterm* ti@:te@
+
+#编码
+defencoding utf8
+encoding utf8 utf8
+
+# 屏幕缓冲区行数
+defscrollback 10000
+
+# 下标签设置
+hardstatus on
+#caption always "%{= kw}%-w%{= kG}%{+b}[%n %t]%{-b}%{= kw}%+w %=%d %M %0c %{g}%H%{-}"
+hardstatus alwayslastline "%{b kw}%H %{r}%1` %{w}| %{g}%c %{w}| %{y}%d.%m.%Y %{w}| %{g}%l %{w}| %{-b kw}%u %-Lw%{= rW}%50> %n%f %t %{-}%+Lw%<"
+#hardstatus string "%{.bW}%-w%{.rW}%n %t%{-}%+w %=%{..G} %H %{..Y} %m/%d %C%a "
+#hardstatus string "%{.bW}%-w%{= kG}%n %t%{-}%+w %=%{..G} %H %{..Y} %Y/%m/%d %c:%s "
+
+#关闭闪屏
+vbell off
+
+#set the startup message
+startup_message off
+term linux
