@@ -1,0 +1,32 @@
+1、新建文件 shell/loginBL.sh
+2、文件内容为
+#!/usr/bin/expect
+#####################################################
+# 自动登陆到某台机器，并执行完成后保持交互状态，
+# 把控制权交给控制台，这个时候就可以手工操作了
+#####################################################
+
+# 此脚本因为有密码，所以不能上传到 git
+# 只能保存在本机
+
+set timeout 60
+
+spawn ssh your name@xx.xx.xx.xx
+expect {
+"(yes/no)?" { send "yes\n"; exp_continue }
+"*Password:" { send "your password\n" }
+}
+
+interact
+
+3、chmod 755 shell/loginBL.sh
+
+4、配置别名
+
+vi .zshrc 或其它的配置文件，以保证alias可用
+
+增加以下内容
+
+alias bl='/usr/bin/expect /Users/your username/shell/loginBL.sh'
+
+ 
